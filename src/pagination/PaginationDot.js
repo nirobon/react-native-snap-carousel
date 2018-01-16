@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { View, Animated, Easing, TouchableOpacity, ViewPropTypes } from 'react-native';
 import PropTypes from 'prop-types';
 import styles from './Pagination.style';
-
+import * as Animatable from 'react-native-animatable';
 export default class PaginationDot extends PureComponent {
 
     static propTypes = {
@@ -42,25 +42,38 @@ export default class PaginationDot extends PureComponent {
     }
 
     _animate (toValue = 0) {
+        this._animatedValue = new Animated.Value(0);
         const { animColor, animOpacity, animTransform } = this.state;
 
         const commonProperties = {
+            //  toValue: 100,
             toValue,
-            duration: 250,
+            duration: 500,
+             delay: 100,
             isInteraction: false,
             useNativeDriver: !this._shouldAnimateColor
         };
 
         let animations = [
-            Animated.timing(animOpacity, {
-                easing: Easing.linear,
-                ...commonProperties
-            }),
-            Animated.spring(animTransform, {
-                friction: 4,
-                tension: 50,
-                ...commonProperties
-            })
+            // Animated.timing(animOpacity, {
+            //     easing: Easing.linear,
+            //     ...commonProperties
+            // }),
+            Animated.sequence(
+            //     animTransform, {
+            //     // friction: 4,
+            //     // tension: 50,
+            //     ...commonProperties
+            // }
+            [
+                
+    Animated.delay(500),
+    Animated.timing(this._animatedValue, {
+        toValue: 1000,
+        duration: 1500
+    })
+]
+        ).start()
         ];
 
         if (this._shouldAnimateColor) {
