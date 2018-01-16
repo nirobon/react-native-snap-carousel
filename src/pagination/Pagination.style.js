@@ -13,7 +13,7 @@ export default StyleSheet.create({
     sliderPaginationDotContainer: {
         alignItems: 'center',
         justifyContent: 'center',
-        marginHorizontal: 8
+        marginHorizontal: 0
     },
     sliderPaginationDot: {
         width: DEFAULT_DOT_SIZE,
