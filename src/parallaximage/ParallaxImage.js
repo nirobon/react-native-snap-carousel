@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { View, ViewPropTypes, Image, Animated, Easing, ActivityIndicator, findNodeHandle } from 'react-native';
 import PropTypes from 'prop-types';
 import styles from './ParallaxImage.style';
-
+import * as Animatable from 'react-native-animatable';
 export default class ParallaxImage extends Component {
 
     static propTypes = {
