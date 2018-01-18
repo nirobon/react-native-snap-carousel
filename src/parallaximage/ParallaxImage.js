@@ -173,12 +173,14 @@ export default class ParallaxImage extends Component {
         };
 
         return (
+           <Animatable.View animation="zoomIn" duration={10000} delay={1000} iterationCount={1}  direction="normal">
             <Animated.Image
               {...other}
               style={[styles.image, style, requiredStyles, dynamicStyles]}
               onLoad={this._onLoad}
               onError={status !== 3 ? this._onError : undefined} // prevent infinite-loop bug
             />
+            </Animatable.View>
         );
     }
 
